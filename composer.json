@@ -1,0 +1,29 @@
+{
+  "name": "iqual/iq_barrio_composer_update",
+  "description": "Backup iq_barrios _definitions.scss file",
+  "type": "composer-plugin",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://github.com/iqual-ch/iq_barrio_composer_update"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Philippe von Bergen",
+      "email": "ph.vonbergen@iqual.ch"
+    }
+  ],
+  "require": {
+    "php": "^5.5.9|>=7.0.8",
+    "composer-plugin-api": "^1.1"
+  },
+  "extra": {
+    "class": "iqual\\Composer\\Plugin\\UpdatePlugin"
+  },
+  "autoload": {
+    "psr-4": {
+      "iqual\\Composer\\": "src"
+    }
+  }
+}
