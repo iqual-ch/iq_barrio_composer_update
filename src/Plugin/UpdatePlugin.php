@@ -58,6 +58,7 @@ class UpdatePlugin implements PluginInterface, EventSubscriberInterface, Capable
     if ($updatedPackage->getName() == 'iqual/iq_barrio') {
       if (file_exists('/var/www/public/themes/custom/_definitions.scss.tmp')) {
         rename('/var/www/public/themes/custom/_definitions.scss.tmp', '/var/www/public/themes/custom/iq_barrio/resources/sass/_definitions.scss');
+        chown('/var/www/public/themes/custom/iq_barrio/resources/sass/_definitions.scss', 'www-data.www-data');
       }
     }
   }
