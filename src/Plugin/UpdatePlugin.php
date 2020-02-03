@@ -2,11 +2,14 @@
 
 namespace iqual\Composer\Plugin;
 
+use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Installer\PackageEvent;
 use Composer\Installer\PackageEvents;
+use Composer\IO\IOInterface;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
+use iqual\Composer\Handler;
 
 /**
  * Composer plugin for handling pagedesigner updates.
@@ -14,10 +17,17 @@ use Composer\Plugin\PluginInterface;
 class UpdatePlugin implements PluginInterface, EventSubscriberInterface, Capable {
 
   /**
+   * Handler.
+   *
+   * @var \iqual\Composer\Handler
+   */
+  protected $handler;
+
+  /**
    * {@inheritdoc}
    */
   public function activate(Composer $composer, IOInterface $io) {
-
+    $this->handler = new Handler($composer, $io);
   }
 
   /**
