@@ -16,6 +16,13 @@ class UpdatePlugin implements PluginInterface, EventSubscriberInterface, Capable
   /**
    * {@inheritdoc}
    */
+  public function activate(Composer $composer, IOInterface $io) {
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCapabilities() {
     return [
       'Composer\Plugin\Capability\CommandProvider' => 'DrupalComposer\DrupalScaffold\CommandProvider',
@@ -39,12 +46,7 @@ class UpdatePlugin implements PluginInterface, EventSubscriberInterface, Capable
    *   Event before update.
    */
   public function prePackage(PackageEvent $event) {
-    $updatedPackage = $event->getOperation()->getTargetPackage();
-    if ($updatedPackage->getName() == 'iqual/iq_barrio') {
-      if (file_exists('/var/www/public/themes/custom/iq_barrio/resources/sass/_definitions.scss')) {
-        copy('/var/www/public/themes/custom/iq_barrio/resources/sass/_definitions.scss', '/var/www/public/themes/custom/_definitions.scss.tmp');
-      }
-    }
+    $this->handler->onPrePackageEvent($event);
   }
 
   /**
@@ -54,13 +56,7 @@ class UpdatePlugin implements PluginInterface, EventSubscriberInterface, Capable
    *   Event after update.
    */
   public function postPackage(PackageEvent $event) {
-    $updatedPackage = $event->getOperation()->getTargetPackage();
-    if ($updatedPackage->getName() == 'iqual/iq_barrio') {
-      if (file_exists('/var/www/public/themes/custom/_definitions.scss.tmp')) {
-        rename('/var/www/public/themes/custom/_definitions.scss.tmp', '/var/www/public/themes/custom/iq_barrio/resources/sass/_definitions.scss');
-        chown('/var/www/public/themes/custom/iq_barrio/resources/sass/_definitions.scss', 'www-data.www-data');
-      }
-    }
+    $this->handler->onPostPackageEvent($event);
   }
 
 }
