@@ -7,8 +7,10 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Installer\PackageEvent;
 use Composer\Installer\PackageEvents;
 use Composer\IO\IOInterface;
+use Composer\Plugin\Capability\CommandProvider;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
+use Drupal\Composer\Plugin\Scaffold\CommandProvider as ScaffoldCommandProvider;
 use iqual\Composer\Handler;
 
 /**
@@ -35,7 +37,7 @@ class UpdatePlugin implements PluginInterface, EventSubscriberInterface, Capable
    */
   public function getCapabilities() {
     return [
-      'Composer\Plugin\Capability\CommandProvider' => 'DrupalComposer\DrupalScaffold\CommandProvider',
+      CommandProvider::class => ScaffoldCommandProvider::class,
     ];
   }
 
