@@ -52,8 +52,9 @@ class Handler {
     $updatedPackage = $event->getOperation()->getTargetPackage();
     if ($updatedPackage->getName() == 'iqual/iq_barrio') {
       $installPath = $this->composer->getInstallationManager()->getInstallPath($updatedPackage);
+      $tmpPath = str_replace('/iq_barrio', '', $installPath);
       if ($installPath && file_exists($installPath . '/resources/sass/_definitions.scss')) {
-        copy($installPath . '/resources/sass/_definitions.scss', $installPath . '/resources/sass/_definitions.scss.tmp');
+        copy($installPath . '/resources/sass/_definitions.scss', $tmpPath . '/_definitions.scss.tmp');
       }
     }
   }
@@ -65,11 +66,13 @@ class Handler {
    *   Event after update.
    */
   public function onPostPackageEvent(PackageEvent $event) {
+
     $updatedPackage = $event->getOperation()->getTargetPackage();
     if ($updatedPackage->getName() == 'iqual/iq_barrio') {
       $installPath = $this->composer->getInstallationManager()->getInstallPath($updatedPackage);
-      if ($installPath && file_exists($installPath . '/resources/sass/_definitions.scss.tmp')) {
-        rename($installPath . '/resources/sass/_definitions.scss.tmp', $installPath . '/resources/sass/_definitions.scss');
+      $tmpPath = str_replace('/iq_barrio', '', $installPath);
+      if ($installPath && file_exists($installPath . '/resources/sass/_definitions.scss')) {
+        rename($tmpPath . '/_definitions.scss.tmp', $installPath . '/resources/sass/_definitions.scss');
       }
     }
   }
