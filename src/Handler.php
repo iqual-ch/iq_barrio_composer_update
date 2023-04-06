@@ -39,7 +39,6 @@ class Handler {
   public function __construct(Composer $composer, IOInterface $io) {
     $this->composer = $composer;
     $this->io = $io;
-    $this->progress = TRUE;
   }
 
   /**
