@@ -11,8 +11,8 @@ use Composer\IO\IOInterface;
  */
 class Handler {
 
-  const PRE_DRUPAL_SCAFFOLD_CMD = 'pre-drupal-scaffold-cmd';
-  const POST_DRUPAL_SCAFFOLD_CMD = 'post-drupal-scaffold-cmd';
+  public const PRE_DRUPAL_SCAFFOLD_CMD = 'pre-drupal-scaffold-cmd';
+  public const POST_DRUPAL_SCAFFOLD_CMD = 'post-drupal-scaffold-cmd';
 
   /**
    * Composer instance.
@@ -39,7 +39,6 @@ class Handler {
   public function __construct(Composer $composer, IOInterface $io) {
     $this->composer = $composer;
     $this->io = $io;
-    $this->progress = TRUE;
   }
 
   /**
