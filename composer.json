@@ -17,7 +17,7 @@
   "require": {
     "php": "^5.5.9|>=7.0.8",
     "composer-plugin-api": "^1.0 || ^2.0",
-    "drupal/core-composer-scaffold": "^8.9 || ^9.0"
+    "drupal/core-composer-scaffold": "^9.0 || ^10"
   },
   "extra": {
     "class": "iqual\\Composer\\Plugin\\UpdatePlugin"
