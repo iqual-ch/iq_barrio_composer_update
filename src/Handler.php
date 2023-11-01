@@ -11,8 +11,8 @@ use Composer\IO\IOInterface;
  */
 class Handler {
 
-  public const PRE_DRUPAL_SCAFFOLD_CMD = 'pre-drupal-scaffold-cmd';
-  public const POST_DRUPAL_SCAFFOLD_CMD = 'post-drupal-scaffold-cmd';
+  final public const PRE_DRUPAL_SCAFFOLD_CMD = 'pre-drupal-scaffold-cmd';
+  final public const POST_DRUPAL_SCAFFOLD_CMD = 'post-drupal-scaffold-cmd';
 
   /**
    * Composer instance.
