@@ -4,8 +4,8 @@
   "type": "composer-plugin",
   "repositories": [
     {
-      "type": "vcs",
-      "url": "https://github.com/GS1-Switzerland/iq_barrio_composer_update"
+      "type": "composer",
+      "url": "https://github.com/iqual-ch/iq_barrio_composer_update"
     }
   ],
   "authors": [
@@ -15,9 +15,9 @@
     }
   ],
   "require": {
-    "php": "^8.3",
+    "php": "^8.1",
     "composer-plugin-api": "^2.0",
-    "drupal/core-composer-scaffold": "^9.5 || ^10 || ^11"
+    "drupal/core-composer-scaffold": "^10 || ^11"
   },
   "extra": {
     "class": "iqual\\Composer\\Plugin\\UpdatePlugin"
